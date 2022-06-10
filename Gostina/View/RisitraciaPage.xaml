@@ -1,0 +1,62 @@
+﻿<Page x:Class="Gostina.View.RisitraciaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gostina.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="825"
+      Title="Регистрация">
+
+    <Grid Background="#7000ff">
+        <ScrollViewer>
+            <Grid>
+                <StackPanel>
+                    <GroupBox>
+                        <Grid>
+                            <StackPanel Background="Orange" Height="294" >
+                                <TextBlock HorizontalAlignment="Center">Номер паспорта</TextBlock>
+                                <TextBox ></TextBox>
+                                <TextBlock HorizontalAlignment="Center">Имя</TextBlock>
+                                <TextBox x:Name="NameTexiBox"></TextBox>
+                                <TextBlock HorizontalAlignment="Center">Фамилия</TextBlock>
+                                <TextBox x:Name="SurnameTextBox"></TextBox>
+                                <TextBlock HorizontalAlignment="Center">Отечество</TextBlock>
+                                <TextBox x:Name="FatherlandTextBox"> </TextBox>
+                                <TextBlock HorizontalAlignment="Center">День рождения</TextBlock>
+                                <DatePicker x:Name="BirhtdayDatePicker"></DatePicker>
+                                <Button x:Name="RisitriaButton" Click="RisitriaButton_Click" Width="140" Height="30" Content="Регистрация"></Button>
+                                <Button x:Name="BackButton" Click="BackButton_Click" Width="70" Height="30" Content="Назад"></Button>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+                <GroupBox Header="Паспортные данные" Width="130" HorizontalAlignment="Left" Height="160" VerticalAlignment="Bottom"  >
+                    <Grid>
+                        <StackPanel Width="100" Height="120"  HorizontalAlignment="Left" Background="Orange" VerticalAlignment="Bottom" >
+                            <TextBlock HorizontalAlignment="Center">Дата выдачи</TextBlock>
+                            <DatePicker></DatePicker>
+                            <TextBlock HorizontalAlignment="Center">Серия</TextBlock>
+                            <TextBox x:Name="NumberSeriaTextBox"></TextBox>
+                            <TextBlock HorizontalAlignment="Center">Номер</TextBlock>
+                            <TextBox x:Name="NumberPassportTextBox"></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Данные для входа" Width="130" HorizontalAlignment="Right" Height="160" VerticalAlignment="Bottom"  >
+                  <Grid>
+                     <StackPanel  Width="100" Height="120"  HorizontalAlignment="Right" Background="Orange" VerticalAlignment="Bottom" >
+                    <TextBlock>Логин</TextBlock>
+                    <TextBox x:Name="LoginTextBox"></TextBox>
+                    <TextBlock>Пароль</TextBlock>
+                    <PasswordBox x:Name="PasswordTextBox"></PasswordBox>
+                </StackPanel>
+                    </Grid>
+                </GroupBox>
+           
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

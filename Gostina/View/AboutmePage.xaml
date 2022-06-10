@@ -1,0 +1,44 @@
+﻿<Page x:Class="Gostina.View.AboutmePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gostina.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="580" d:DesignWidth="800"
+      Title="Обо мне">
+
+    <Grid Background="#7000ff">
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center">Имя</TextBlock>
+            <TextBox x:Name="NameTexiBox">Меня зовут Асока</TextBox>
+            <TextBlock HorizontalAlignment="Center">Фамилия</TextBlock>
+            <TextBox x:Name="SurnameTextBox">Моя фамилия Тано-Бонтери</TextBox>
+            <TextBlock HorizontalAlignment="Center">Отечество</TextBlock>
+            <TextBox x:Name="FatherlandTextBox">Мое отечество Олеговна</TextBox>
+            <TextBlock HorizontalAlignment="Center">День рождения</TextBlock>
+            <DatePicker x:Name="BirhtdayDatePicker"></DatePicker>
+            <TextBlock HorizontalAlignment="Center">Логин</TextBlock>
+            <TextBox  x:Name="LoginTextBox">master</TextBox>
+            <TextBlock HorizontalAlignment="Center">Пароль</TextBlock>
+            <PasswordBox  x:Name="PadPasswordBox"></PasswordBox>
+            <TextBlock HorizontalAlignment="Center">Семья</TextBlock>
+            <TextBox Height="30">У меня пятеро детей и муж.2 старших дочерей и двое сыновей и 3 младшая дочка.Мужа зовут Лакс</TextBox>
+            <TextBlock HorizontalAlignment="Center">Образ-ние</TextBlock>
+            <TextBox Height="30">4Высших образования Филосов Преподаватель Археолог и историк</TextBox>
+            <TextBlock HorizontalAlignment="Center">Профессия</TextBlock>
+            <TextBox Height="30">Преподаватель философии-истории-ахеологии</TextBox>
+            <TextBlock HorizontalAlignment="Center">Хобби</TextBlock>
+            <TextBox Height="30">Люблю играть в шахматы.Состою в клубе игроков шахматов</TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Button Width="210" Height="30" x:Name="SaveButton" Click="SaveButton_Click" Content="Сохранить изменения"></Button>
+                <Button Width="88" Height="30" x:Name="BackButton" Click="BackButton_Click" Content="Назад"></Button>
+             
+            </StackPanel>
+  
+
+
+
+        </StackPanel>
+    </Grid>
+</Page>

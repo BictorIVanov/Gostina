@@ -1,0 +1,46 @@
+﻿<Page x:Class="Gostina.View.TopayServicesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gostina.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Оплата услуги">
+
+    <Grid Background="#7000ff">
+        <Image Source="/Assets/Images/restaurant .JPEG"></Image>
+        <StackPanel Width="180" Height="380" HorizontalAlignment="Left" Background="#0085FF">
+            <TextBlock>Имя</TextBlock>
+            <TextBox></TextBox>
+            <TextBlock>Фамилия</TextBlock>
+            <TextBox></TextBox>
+            <TextBlock>Отечество</TextBlock>
+            <TextBox></TextBox>
+            <TextBlock>Дата прихода</TextBlock>
+            <DatePicker></DatePicker>
+            <TextBlock>Время прихода</TextBlock>
+            <ComboBox> 09.00
+            <TextBlock>11.00</TextBlock>
+            <TextBlock>13.00</TextBlock>
+            <TextBlock>18.00</TextBlock>
+            </ComboBox>
+            <TextBlock>Время работы</TextBlock>
+            <TextBox>08.00 - 21.00</TextBox>
+            <TextBlock>Виды оплаты</TextBlock>
+            <ComboBox>Наличные
+            <TextBlock>Карточкой</TextBlock>
+            </ComboBox>
+            <TextBlock>Номер вашей карточкой</TextBlock>
+            <TextBox></TextBox>
+            <TextBlock>Ваш телефон</TextBlock>
+            <TextBox></TextBox>
+            <Button Width="70" Height="40" VerticalAlignment="Bottom" Content="Назад" x:Name="BackButton" Click="BackButton_Click"></Button>
+        </StackPanel>
+        <StackPanel Width="120" Height="60" HorizontalAlignment="Right" Background="#FF5C00" VerticalAlignment="Bottom">
+            <TextBlock>Стоимость услуги</TextBlock>
+            <TextBox Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FF5C00">700 рублей</TextBox>
+        </StackPanel>
+        <Button Width="250" Height="40" VerticalAlignment="Bottom" Content="Заказать услугу ресторан" x:Name="Topayservicesrestaurant" Click="Topayservicesrestaurant_Click"></Button>
+    </Grid>
+</Page>

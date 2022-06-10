@@ -1,0 +1,833 @@
+                                                    Главная страница
+<Grid Background="#7000ff">
+        <Image Source="Assets/Oten.jpg" ></Image>
+        <Button x:Name="StartButton" Click="StartButton_Click" HorizontalAlignment="Center" Content="Вперед" Width="80" Height="30"></Button>
+        <Frame x:Name="MainFrame"  ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>      
+    </Grid>
+                                                   Главная страница.Cs                                       
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (!MainFrame.CanGoBack)
+            {
+                StartButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                StartButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new PersonalPage());
+        }
+                                                     Личный Кабинет
+  <Grid>
+        <UniformGrid Columns="2">
+            <Button x:Name="FiriGuestc" Click="FiriGuestc_Click" Width="208" Height="104">Постояльцы</Button>
+            <Button x:Name="ViriGostnomer" Click="ViriGostnomer_Click" Width="208" Height="104" >Гостиничный Номер </Button>
+            <Button x:Name="BareRisitracia" Click="BareRisitracia_Click" Width="208" Height="104">Регистрация</Button>
+            <Button x:Name="VareServies" Click="VareServies_Click" Width="208" Height="104">Услуги</Button>            
+        </UniformGrid>
+  </Grid>
+                                                   Личный кабинет.Cs
+ public PersonalPage()
+        {
+            InitializeComponent();
+        }
+
+        private void FiriGuestc_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Guestc());
+        }
+
+        private void ViriGostnomer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Страница в разработке");
+        }
+
+        private void BareRisitracia_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate( new Pages());
+        }
+
+        private void VareServies_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Страница в разработке");
+        }
+                                                     Пароль и Логин
+<Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="Orange" >
+            <TextBlock >Логин</TextBlock>
+            <TextBox Background="Aqua" x:Name="LoginTextBox"></TextBox>
+            <TextBlock>Пароль</TextBlock>
+            <PasswordBox Background="Aqua" x:Name="PadPasswordBox"></PasswordBox>
+            <Button x:Name="NavButton" Click="NavButtonClick">Войти</Button>
+            <TextBlock Background="Aqua" x:Name="RisiTextBlock">Зарегистроваться</TextBlock>
+        </StackPanel>
+
+    </Grid>
+
+                                                     Регистрация
+<ScrollViewer VerticalScrollBarVisibility="Auto" >
+        <Grid >
+            <StackPanel Background="#7000ff">
+                <StackPanel Width="768" Background="Orange">
+                    <TextBlock HorizontalAlignment="Center">Номер паспорта</TextBlock>
+                        <TextBox ></TextBox>
+                        <TextBlock HorizontalAlignment="Center">Имя</TextBlock>
+                        <TextBox></TextBox>
+                        <TextBlock HorizontalAlignment="Center">Фамилия</TextBlock>
+                        <TextBox></TextBox>
+                        <TextBlock HorizontalAlignment="Center">Отечество</TextBlock>
+                        <TextBox></TextBox>
+                        <TextBlock HorizontalAlignment="Center">День рождения</TextBlock>
+            <DatePicker></DatePicker>
+                </StackPanel>
+            </StackPanel>
+ 
+
+
+            <StackPanel Margin="250"  HorizontalAlignment="Left" Background="Orange">
+                    <TextBlock HorizontalAlignment="Center">Дата выдачи</TextBlock>
+                    <DatePicker></DatePicker>
+                    <TextBlock HorizontalAlignment="Center">Серия</TextBlock>
+                    <TextBox></TextBox>
+                    <TextBlock HorizontalAlignment="Center">Номер</TextBlock>
+                    <TextBox></TextBox>
+                </StackPanel>
+                <StackPanel Margin="250"  HorizontalAlignment="Right" Background="Orange" Width="90">
+                    <TextBlock>Логин</TextBlock>
+                    <TextBox></TextBox>
+                    <TextBlock>Пароль</TextBlock>
+                    <PasswordBox></PasswordBox>
+                
+                  
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+                                                  Постояльцы
+ <Grid>
+        <StackPanel>
+            <UniformGrid>
+                <Label HorizontalAlignment="Center">Постояльцы</Label>
+            </UniformGrid>
+        <UniformGrid >
+            <Label>Номер Паспорта</Label>
+        </UniformGrid>
+            <UniformGrid>
+                <Label>Фамилия Имя Отечество</Label>
+            </UniformGrid>
+            <UniformGrid>
+                <Label>Год рождения</Label>
+            </UniformGrid>
+            <UniformGrid>
+                <Label>Адресс</Label>
+            </UniformGrid>
+            <UniformGrid>
+                <Label>Цель</Label>
+            </UniformGrid>
+            <Button x:Name="FiriGuestc"  Width="350" Height="29" Content="Посмотреть постояльцев"></Button>
+        </StackPanel>
+    </Grid>
+                                               Постояльцы инфо
+ <Grid>
+        <DataGrid 
+            ColumnWidth="*" 
+            AutoGenerateColumns="False"  
+            IsReadOnly="True" 
+            SelectionMode="Single" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер Паспорта"></DataGridTextColumn>
+                <DataGridTextColumn Width="150" Header="Имя Фамилия Отечество"></DataGridTextColumn>
+                <DataGridTextColumn Header="Год рождения"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адресс"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цель"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+  
+            </DataGrid.Columns>            
+        </DataGrid>
+    </Grid>
+                                           Гостичный номер
+ <Grid Background="#7000ff">
+        <StackPanel  Width="800" Height="220" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Center"  >
+            <TextBlock HorizontalAlignment="Center">Тип номеров</TextBlock>
+            <TextBlock  HorizontalAlignment="Center">Люкс</TextBlock>
+            <TextBlock HorizontalAlignment="Center">Полулюкс</TextBlock>
+            <TextBlock HorizontalAlignment="Center">Одноместный</TextBlock>
+            <TextBlock  HorizontalAlignment="Center">Многоместный</TextBlock>
+            <TextBlock Width="280" Height="60" HorizontalAlignment="Left">Стоимость
+                <TextBlock></TextBlock>
+                от<TextBox Width="40" Height="14" Background="#FF5C00"></TextBox>
+                <TextBox Width="40" Height="14" Background="#FF5C00"></TextBox>
+                до<TextBox Width="40" Height="14" Background="#FF5C00"></TextBox>
+                <TextBox Width="40" Height="14" Background="#FF5C00"></TextBox>
+            </TextBlock>
+            <TextBlock Width="480" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top" >Сортировка
+                 <TextBlock Background="OldLace" Width="80" Height="20"> </TextBlock>
+                <TextBlock Background="OldLace" Width="80" Height="20"> </TextBlock>
+                <TextBlock Background="OldLace" Width="80" Height="20"> </TextBlock>
+                <TextBlock Background="OldLace" Width="80" Height="20"> </TextBlock>
+                <TextBlock Background="OldLace" Width="80" Height="20"> </TextBlock>
+            </TextBlock>
+
+        </StackPanel>
+        <TextBlock Width="800" Height="220"  VerticalAlignment="Bottom" Background="Orange">
+                <TextBlock Width="220" Height="110" Background="Aqua" >
+                     <Image Source="/Assets/luxury.jpg" Width="100" Height="50"/>
+                        <Button Width="115" Height="30" Background="Gold"  Content="Oren nomer" ></Button> 
+                   </TextBlock>
+        
+            <TextBlock Width="120" Height="80" Background="Aqua"  >
+                <Image Source="/Assets/junior suite.jpg" Width="100" Height="50"></Image>
+                <Button Width="115" Height="30"></Button>
+            </TextBlock>
+            <Label Width="120" Height="80" Background="Aqua" >
+                <Image Source="/Assets/single.jpg"  Width="100" Height="50"></Image>
+            </Label>
+            <Label Width="120" Height="80" Background="Aqua">
+                <Image Source="/Assets/multi-seat.jpg" Width="100" Height="50"></Image>
+            </Label>
+            <Label Width="120" Height="80" Background="Aqua">
+                <Image Source="/Assets/single.jpg" Width="100" Height="50"></Image>
+            </Label>
+            <Label Width="120" Height="80" Background="Aqua">
+                <Image Source="/Assets/lyuk.jpg" Width="100" Height="50"></Image>
+            </Label>
+        </TextBlock>
+
+
+
+
+
+
+    </Grid>
+
+                                            Забронировать номер
+
+ <Image Source="/Assets/lyuk.jpg" Width="286" Height="220" HorizontalAlignment="Center" VerticalAlignment="Top"></Image>
+        <TextBlock HorizontalAlignment="Left" Width="140" Height="70" Background="#4200FF">Июнь2012 Июль2012</TextBlock>
+
+        <!--<TextBox Width="140" Height="20" Text="Заселение-Выселение"  ></TextBox>
+        <Image Source="/Assets/123.png" Width="18" Height="22">--><!--
+        </Image>-->
+
+
+        <Button  HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="220" Height="50" Background="#FF00F5">Забронировать номер</Button>
+
+
+Тесты КУРСОВОЙ НАЧАЛО
+
+
+ public string Gostin(string text)
+        {
+            char[] cArray = text.ToCharArray();
+            string Gostina = string.Empty;
+            for(int i = cArray.Length - 1; i > - 1; i--)
+            {
+                Gostina += cArray[i];
+            }
+            return Gostina;
+        }
+
+
+
+            //  Arrange
+            string text = "Yoda";
+            string resultText = "Adoy";
+
+            //  Act.
+           go
+            //  Assert
+
+
+                                                      ТЕСТЫ КУРСОВОЙ
+
+ [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void Gostina_Guestc_ReturnNull()
+        {
+            //  Arrange
+            string text = "";
+            string resultText = "";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Gostnomer_ReturnNomerNomera()
+        {
+            //  Arrange
+            string text = "Л.212";
+            string resultText = "212.Л";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnGrangSurname()
+        {
+            //  Arrange
+            string text = "Yoda.Yodovir";
+            string resultText = "rivodoY.adoY";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_GostNomer_ReturnnomerNomera()
+        {
+            //  Arrange
+            string text = "Л212";
+            string resultText = "212Л";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+
+        [TestMethod]
+        public void Gostina_Guestc_ReturnSurname()
+        {
+            //  Arrange
+            string text = "Obivan.Kenobi";
+            string resultText = "iboneK.navibO";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Gostnomer_ReturnNomerNomeria()
+        {
+            //  Arrange
+            string text = "П214";
+            string resultText = "412П";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+
+        [TestMethod]
+        public void Gostina_Guestc_ReturnName()
+        {
+            //  Arrange
+            string text = "Mixail";
+            string resultText = "liaxiM";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Gostnomer_ReturnNomermomera()
+        {
+            //  Arrange
+            string text = "O.216";
+            string resultText = "612.O";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+
+        [TestMethod]
+        public void Gostina_Guestc_ReturnNameMastera()
+        {
+            //  Arrange
+            string text = "Ansoka";
+            string resultText = "akosnA";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+
+
+        }
+        [TestMethod]
+        public void Gostina_Gostnomer_ReturnNumberrooms()
+        {
+            //  Arrange
+            string text = "3.";
+            string resultText = ".3";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnMasteraName()
+        {
+            //  Arrange
+            string text = "Kalifa";
+            string resultText = "afilaK";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+
+
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnBirthday()
+        {
+            //  Arrange
+            string text = "1992-09-03";
+            string resultText = "30-90-2991";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+
+        [TestMethod]
+        public void Gostina_Guestc_ReturnMasteraname()
+        {
+            //  Arrange
+            string text = "Netro";
+            string resultText = "orteN";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnNumberrooms()
+        {
+            //  Arrange
+            string text = "324-572";
+            string resultText = "275-423";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnmasterName()
+        {
+            //  Arrange
+            string text = "Katuni";
+            string resultText = "inutaK";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnGoal()
+        {
+            //  Arrange
+            string text = "Sobranie";
+            string resultText = "einarboS";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnNameGuestc()
+        {
+            //  Arrange
+            string text = "Asnla";
+            string resultText = "alnsA";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnAdress()
+        {
+            //  Arrange
+            string text = "Yekitef";
+            string resultText = "fetikeY";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+
+
+        }
+        [TestMethod]
+        public void Gostina_Guestc_Returnmastername()
+        {
+            //  Arrange
+            string text = "Barric";
+            string resultText = "cirraB";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Gostnomer_ReturnNumberNomera()
+        {
+            //  Arrange
+            string text = "O.228";
+            string resultText = "822.o";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnSurnameGuestc()
+        {
+            //  Arrange
+            string text = "Kel.Ketcin";
+            string resultText = "nicteK.leK";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+        [TestMethod]
+        public void Gostina_Guestc_ReturnPassword()
+        {
+            //  Arrange
+            string text = "78435";
+            string resultText = "53487";
+
+            //  Act.
+            GostinClass objClass = new GostinClass();
+
+            string result = objClass.Gostin(text);
+
+            //Assert
+            Assert.AreEqual(result, resultText);
+        }
+    }
+}
+
+ЫФЫФЦКУЕПЫКЕРПЕЦНВЕШОГАПСОЛАПЙЕУЕКГЕНГОПРУЕЕКРРОПМ
+Пояснителт записка
+
+Должны формироваться файлы отчётов, регламентирующие деятельность гостиницы
+
+
+
+                                                    Пояснительная записка
+
+МИНИСТЕРСТВО ОБРАЗОВАНИЯ И МОЛОДЕЖНОЙ ПОЛИТИКИ СВЕРДЛОВСКОЙ ОБЛАСТИ ГАПОУ СО «ЕКАТЕРИНБУРГСКИЙ МОНТАЖНЫЙ КОЛЛЕДЖ»
+
+
+
+
+КУРСОВОЙ ПРОЕКТ
+
+по дисциплине «Тестирование кода информационных систем»
+Тема :« АРМ регистрации постояльцев в гостинице»
+
+  
+					
+
+0	9	0	2	0	7
+        - КП - 
+
+
+
+                        Руководитель Курсового Проекта:
+                                                         Грибова Анна Владимировна
+                                                         Студент Гр. Ип-912К
+                                                         Иванов Виктор Сергеевич
+2022
+                                                          Г. Екатеринбург
+
+
+
+СОДЕРЖАНИЕ 
+
+
+
+ВВЕДЕНИЕ
+
+
+1.	ТЕХНИЧЕСКОЕ ЗАДАНИЕ
+ На курсовую работу по дисциплине «МДК 05.03 Тестирование информационных систем»
+Тема  курсовой работу по дисцплине :« АРМ регистрации постояльцев в гостинице»
+
+Выдано студенту Иванову Виктору Сергеевичу группы ИП-912к 
+Руководитель проектирования: Грибова А.В.
+                               1. ВИД АВТОМАТИЗИРУЕМОЙ ДЕЯТЕЛЬНОСТИ
+Сфера услуг гостиницы включает обслуживание и бронирование номеров, ресторан, спортивный и тренажерный залы, сауну. Основной услугой является гостиничный номер, все остальное входит в разряд прочих услуг. Все заказы и их оплата записываются в базе данных отеля. Платежи за гостиничные номера и другие услуги учитываются отдельно друг от друга. 
+Информационная система для предметной области «Регистрация постояльцев в гостинице» должна осуществлять ввод, хранение, обработку и вывод данных о: 
+- постояльцах; 
+- гостиничных номерах; 
+- вселении или выселении постояльцев. 
+Данные о каждом постояльце должны содержать: 
+- № паспорта – строка формата «NNNN - NNNNNN», где N –цифры; 
+- ФИО – строка; 
+- Год рождения – целое; 
+- Адрес – строка; 
+- Цель прибытия – строка. 
+Примечание – длина строк (кроме № паспорта) определяется студентом самостоятельно. Список клиентов содержит код клиента, имя и фамилию клиента, страну, город, номер телефона. Список номеров включает номер комнаты, класс номера, оплату номера в день. В информацию о платежах за номера входят дата, код клиента, номер комнаты, число дней. Описание прочих услуг включает дату, код клиента, вид услуги (ресторан, спортивные тренажеры, досуг), размер оплаты. 
+
+
+
+Данные о каждом гостиничном номере должны содержать:
+ - № гостиничного номера – строка формата «ANNN», где A – буква, обозначающая тип номера (Л – люкс, П – полулюкс, О – одноместный, М – многоместный), NNN – порядковый номер (цифры); -
+ Количество мест – целое;
+ - Количество комнат – целое;
+- Наличие санузла – логическое; 
+- Оборудование – строка. 
+Данные о гостиничных номерах должны быть организованны в виде дерева поиска, упорядоченного по «№ гостиничного номера».
+Данные о вселении или выселении постояльцев должны содержать:
+ - № паспорта – строка, формат которой соответствует аналогичной строке в данных о постояльцах;
+ - «№ гостиничного номера – строка, формат которой соответствует аналогичной строке в данных о гостиничных номерах; 
+- Дата заселения - строка; 
+- Дата выселения - строка. 
+Данные о вселении или выселении постояльцев должны быть организованны в виде списка, который упорядочен по первичному ключу – «№ гостиничного номера». Вид списка и метод сортировки определяются вариантом задания. 
+Информационная система «Регистрация постояльцев в гостинице» должна осуществлять следующие операции:
+•   регистрация нового постояльца; 
+•   удаление данных о постояльце; 
+•   просмотр всех зарегистрированных постояльцев; 
+•   очистка данных о постояльцах; 
+•   поиск постояльца по № паспорта. Результаты поиска – все сведения о найденном постояльце и № гостиничного номера, в котором он проживает; 
+• поиск постояльца по ФИО. Результаты поиска
+Система должна предусматривать авторизацию пользователей, отправку авторизационных данных на их электронную почту.
+
+2.ТРЕБОВАНИЯ К ПРОГРАММНОМУ ОБЕСПЕЧЕНИЮ 
+В качестве системы управления данными (СУБД) необходимо использовать СУБД MS SQL SERVER, в качестве среды программирования –MS Visual Studio; 
+3 ТРЕБОВАНИЯ К ТЕХНИЧЕСКОЙ РЕАЛИЗАЦИИ ПРОЕКТА 
+При реализации проекта необходимо:  Использовать систему Windows Presentation Foundation (WPF) в составе . NET Framework для построения клиентских приложений Windows  проявить навыки ООП;  для стилизации приложения использовать словарь ресурсов;  использовать методику разработки приложения через тестирование (Test Driven Development);  проявить навыки работы с системой контроля версий Git, Gogs, GitHub, GitLab и др.  создать инсталлятор приложения.
+4. ТРЕБОВАНИЯ К ФОРМЕ ПРЕДСТАВЛЕНИЯ ВЫХОДНОЙ ИНФОРМАЦИИ 
+Должны формироваться файлы отчётов, регламентирующие деятельность гостиницы
+
+
+	
+
+                                                                     БАЗА ДАННЫХ 
+                                                                        Gos
+
+Постояльцы
+
+IdGuestc	int	        Unchecked
+NumberPassport	nchar(10)	Checked
+NumberSeria	nvarchar(50)	Checked
+Name	        nvarchar(50)	Checked
+Surname	        nvarchar(50)	Checked
+Fetherland	nvarchar(50)	Checked
+Birthday	date	        Checked
+Adress	        nchar(10)	Checked
+Goal	        nvarchar(50)	Checked
+Login	        nvarchar(50)	Checked
+Password	nvarchar(50)	Checked
+		Unchecked
+
+
+
+
+1	538-456    8554			Yoda     Yodovir	Yodovinov	1110-12-04	Bitrp     	Sobranie	grand	orden
+2	437-785    5453		        Obivav    Kenobi	Kenobix	        1980-06-03	Roderta   	Sobranie	master	45678
+3	348-761    6543			Mixail    Cfetlin	Alexandrov	1980-07-05	Numerta   	Sobranie	master	01234
+4	896-541    5432			Ansoka    Tano	        Bonteri	        1992-08-01	Riti      	Sobranie	master	34567
+5	567-423    9745 		Kalifa    Fano	        Faranova	1992-09-03	Neder     	Sobranie	master	64543
+6	324-572    7643			Netro     Nurlyev	Urmanov	        1998-11-09	Teria     	Sobranie	master	89703
+7	321-643    1234			Katuni    Faxandrova	Cfetlanoba	1998-12-08	Feteria   	Sobranie	master	64576
+8	765-245    4332			Asnla     Sokolova	Adamovna	1997-01-21	Yekitef   	Sobranie	master	64523
+9	543-765    9843			Barric    Katsina	Ippolitovna	1992-12-24	Zilina    	Sobranie	master	78654
+10	657-987    3456			Kel       Katsin	Azarnov	        1992-05-27	Nilirit   	Sobranie	master	78435
+
+Услуги
+
+IdSer	        int	
+Sefes	        nvarchar(50)	
+Cost	        nvarchar(50)	
+TimeServices	nvarchar(50)	
+Numberofvisits	nvarchar(50)	
+Img	        nvarchar(50)	
+		
+
+1	Restaurant	700	120	7	restaurant .JPEG
+2	Sportzal	800	40	10	sportzal.png
+3	trenerzal	750	50	6	trenerzal.jpeg
+4	sayna	        850	60	8	sayna.jpg
+5	saxmat	        280	90	20	saxmat.jpeg
+6	Restaurant	750	110	9	restaurant .JPEG
+7	Sportzal	850	130	11	sportzal.png
+8	trenezal	742	100	16	trenerzal.jpeg
+9	sayna	        650	90	17	sayna.jpg
+10	saxmat	        820	180	20	saxmat.jpeg
+
+Гостичные номера
+
+IdGost	        int	
+Numbernomer	nvarchar(50)	
+Numberseats	nvarchar(50)	
+Numberrooms	nvarchar(50)	
+Bathroom	nvarchar(50)	
+Equipment	nvarchar(50)
+Img	        nvarchar(50)	
+		
+
+1	Л.212   	4         	3         	0       1	luxury.jpg
+2	П.214   	3         	1         	1	0	junior suite.jpg
+3	O.216   	2         	2         	0	1	singlet.jpg
+4	М.218   	3         	2         	1	0	multi-seat.jpg
+5	Л.220   	2         	2         	0       1	lyuk.jpg
+6	O.222   	3         	2         	1     	0	single.jpg
+7	Л.224   	4         	2         	0    	1	luxury.jpg
+8	П.226   	3         	2         	1   	0	junior suite.jpg
+9	О.228   	4         	3         	0   	1	single.jpg
+10	O.228   	4         	3         	0     	1	single.jpg
+
+
+Заселение и Выселение
+
+Id	        int	
+NumberPassport	nvarchar(50)	
+Numbernomer	nvarchar(50)	
+Zacelenie	date	
+Becelenie	date	
+IdGost	        nvarchar(50)	
+IdGuestc	nchar(10)	
+IdSer	        nchar(10)	
+		
+
+ыфыфыфыфкйуцаыв
+
+1	538-456   	Л.212     	2022-06-12	2022-07-30	1	1         	         
+2	437-785   	П.214     	2022-06-12	2022-07-30	2	2         	         
+3	348-761   	O.216     	2022-06-12	2022-07-30	3	3         	         
+4	896-541   	М.218     	2022-06-12	2022-07-30	4	4         	         
+5	567-423   	Л.220     	2022-06-13	2022-07-30	5	5         	         
+6	324-572   	O.222     	2022-06-13	2022-07-30	6	6         	         
+7	321-643   	Л.224     	2022-06-13	2022-07-30	7	7         	         
+8	765-245   	П.226     	2022-06-13	2022-07-30	8	8         	         
+9	543-765   	О.228     	2022-06-14	2022-07-30	9	9         	        
+10	657-987   	O.228     	2022-06-12	2022-07-30	10	10        	        
+NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+
+
+
+
+
+
+
+удалить данные
+
+
+ var row = GuestcDataGrid.SelectedItem as Guestc;
+
+            if (row == null) 
+            {
+                MessageBox.Show("Вы не выбрали ни одной строки");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Вы уверены,что хотите очистить строку", "Очистить", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if(result == MessageBoxResult.Yes)
+            {
+                //
+                context.Guestc.Remove(row);
+                //
+                context.SaveChanges();
+                //
+                ShowTable();
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище GosModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gostnomer">
+          <Key>
+            <PropertyRef Name="IdGost" />
+          </Key>
+          <Property Name="IdGost" Type="int" Nullable="false" />
+          <Property Name="Numbernomer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numberseats" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numberrooms" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bathroom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Equipment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Guestc">
+          <Key>
+            <PropertyRef Name="IdGuestc" />
+          </Key>
+          <Property Name="IdGuestc" Type="int" Nullable="false" />
+          <Property Name="NumberPassport" Type="nchar" MaxLength="10" />
+          <Property Name="NumberSeria" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fetherland" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Adress" Type="nchar" MaxLength="10" />
+          <Property Name="Goal" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="IdSer" />
+          </Key>
+          <Property Name="IdSer" Type="int" Nullable="false" />
+          <Property Name="Sefes" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cost" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeServices" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Numberofvisits" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zacebece">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NumberPassport" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numbernomer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zacelenie" Type="date" />
+          <Property Name="Becelenie" Type="date" />
+          <Property Name="IdGost" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdGuestc" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Zacebece_Gostnomer">
+          <End Role="Gostnomer" Type="Self.Gostnomer" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Gostnomer">
+              <PropertyRef Name="IdGost" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacebece_Guestc">
+          <End Role="Guestc" Type="Self.Guestc" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Guestc">
+              <PropertyRef Name="IdGuestc" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacebece_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="IdSer" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище GosModelContainer">
+          <EntitySet Name="Gostnomer" EntityType="Self.Gostnomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guestc" EntityType="Self.Guestc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zacebece" EntityType="Self.Zacebece" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Zacebece_Gostnomer" Association="Self.FK_Zacebece_Gostnomer">
+            <End Role="Gostnomer" EntitySet="Gostnomer" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacebece_Guestc" Association="Self.FK_Zacebece_Guestc">
+            <End Role="Guestc" EntitySet="Guestc" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacebece_Services" Association="Self.FK_Zacebece_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gostnomer">
+          <Key>
+            <PropertyRef Name="IdGost" />
+          </Key>
+          <Property Name="IdGost" Type="Int32" Nullable="false" />
+          <Property Name="Numbernomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numberseats" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numberrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bathroom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zacebece" Relationship="Self.FK_Zacebece_Gostnomer" FromRole="Gostnomer" ToRole="Zacebece" />
+        </EntityType>
+        <EntityType Name="Guestc">
+          <Key>
+            <PropertyRef Name="IdGuestc" />
+          </Key>
+          <Property Name="IdGuestc" Type="Int32" Nullable="false" />
+          <Property Name="NumberPassport" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NumberSeria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fetherland" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Adress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Goal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zacebece" Relationship="Self.FK_Zacebece_Guestc" FromRole="Guestc" ToRole="Zacebece" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="IdSer" />
+          </Key>
+          <Property Name="IdSer" Type="Int32" Nullable="false" />
+          <Property Name="Sefes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeServices" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numberofvisits" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zacebece" Relationship="Self.FK_Zacebece_Services" FromRole="Services" ToRole="Zacebece" />
+        </EntityType>
+        <EntityType Name="Zacebece">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NumberPassport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numbernomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zacelenie" Type="DateTime" Precision="0" />
+          <Property Name="Becelenie" Type="DateTime" Precision="0" />
+          <Property Name="IdGost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdGuestc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Gostnomer" Relationship="Self.FK_Zacebece_Gostnomer" FromRole="Zacebece" ToRole="Gostnomer" />
+          <NavigationProperty Name="Guestc" Relationship="Self.FK_Zacebece_Guestc" FromRole="Zacebece" ToRole="Guestc" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Zacebece_Services" FromRole="Zacebece" ToRole="Services" />
+        </EntityType>
+        <Association Name="FK_Zacebece_Gostnomer">
+          <End Role="Gostnomer" Type="Self.Gostnomer" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Gostnomer">
+              <PropertyRef Name="IdGost" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacebece_Guestc">
+          <End Role="Guestc" Type="Self.Guestc" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Guestc">
+              <PropertyRef Name="IdGuestc" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacebece_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Zacebece" Type="Self.Zacebece" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="IdSer" />
+            </Principal>
+            <Dependent Role="Zacebece">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gostnomer" EntityType="Self.Gostnomer" />
+          <EntitySet Name="Guestc" EntityType="Self.Guestc" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="Zacebece" EntityType="Self.Zacebece" />
+          <AssociationSet Name="FK_Zacebece_Gostnomer" Association="Self.FK_Zacebece_Gostnomer">
+            <End Role="Gostnomer" EntitySet="Gostnomer" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacebece_Guestc" Association="Self.FK_Zacebece_Guestc">
+            <End Role="Guestc" EntitySet="Guestc" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacebece_Services" Association="Self.FK_Zacebece_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Zacebece" EntitySet="Zacebece" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GosModelContainer" CdmEntityContainer="GosEntities">
+          <EntitySetMapping Name="Gostnomer">
+            <EntityTypeMapping TypeName="GosModel.Gostnomer">
+              <MappingFragment StoreEntitySet="Gostnomer">
+                <ScalarProperty Name="IdGost" ColumnName="IdGost" />
+                <ScalarProperty Name="Numbernomer" ColumnName="Numbernomer" />
+                <ScalarProperty Name="Numberseats" ColumnName="Numberseats" />
+                <ScalarProperty Name="Numberrooms" ColumnName="Numberrooms" />
+                <ScalarProperty Name="Bathroom" ColumnName="Bathroom" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guestc">
+            <EntityTypeMapping TypeName="GosModel.Guestc">
+              <MappingFragment StoreEntitySet="Guestc">
+                <ScalarProperty Name="IdGuestc" ColumnName="IdGuestc" />
+                <ScalarProperty Name="NumberPassport" ColumnName="NumberPassport" />
+                <ScalarProperty Name="NumberSeria" ColumnName="NumberSeria" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Fetherland" ColumnName="Fetherland" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Goal" ColumnName="Goal" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="GosModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="IdSer" ColumnName="IdSer" />
+                <ScalarProperty Name="Sefes" ColumnName="Sefes" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="TimeServices" ColumnName="TimeServices" />
+                <ScalarProperty Name="Numberofvisits" ColumnName="Numberofvisits" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zacebece">
+            <EntityTypeMapping TypeName="GosModel.Zacebece">
+              <MappingFragment StoreEntitySet="Zacebece">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumberPassport" ColumnName="NumberPassport" />
+                <ScalarProperty Name="Numbernomer" ColumnName="Numbernomer" />
+                <ScalarProperty Name="Zacelenie" ColumnName="Zacelenie" />
+                <ScalarProperty Name="Becelenie" ColumnName="Becelenie" />
+                <ScalarProperty Name="IdGost" ColumnName="IdGost" />
+                <ScalarProperty Name="IdGuestc" ColumnName="IdGuestc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
